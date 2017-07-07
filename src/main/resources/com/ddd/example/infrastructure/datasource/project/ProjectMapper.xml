@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddd.example.infrastructure.datasource.project.ProjectMapper">
+
+  <resultMap id="projectSummary" type="com.ddd.example.domain.model.project.ProjectSummary">
+    <id property="id.value" column="pj_id"/>
+    <result property="name.value" column="pj_name"/>
+  </resultMap>
+
+  <select id="list" resultMap="projectSummary">
+    SELECT
+        pj.id   pj_id
+      , pj.name pj_name
+    FROM
+      projects pj
+    ORDER BY
+      pj.name
+  </select>
+
+</mapper>

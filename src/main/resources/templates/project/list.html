@@ -1,93 +1,28 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
 <head>
-  <meta charset="UTF-8"/>
-  <title>DDD Example</title>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-                         th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
-  <style>
-    .page-header {
-      margin-top: 60px;
-    }
-    .pagination {
-      margin: 0;
-    }
-  </style>
 </head>
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">DDD Example</a>
-      </div>
-
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">プロジェクト一覧</a></li>
-          <!--
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu 1 <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action 1-1</a></li>
-              <li><a href="#">Action 1-2</a></li>
-              <li class="active"><a href="#">Action 1-3</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Action 1-4</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Action 1-5</a></li>
-            </ul>
-          </li>
-          -->
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">ログアウト</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class="container-fluid">
+  <div layout:fragment="content">
     <h3 class="page-header">プロジェクト一覧</h3>
-    <div class="pull-right">
-      <a href="#" class="btn btn-default btn-sm">新規登録</a>
-    </div>
     <table class="table table-condensed">
       <thead>
         <tr>
           <th>#</th>
           <th>プロジェクト名</th>
-          <th></th>
+          <th>
+            <div class="pull-right">
+              <a href="#" class="btn btn-default btn-sm">新規登録</a>
+            </div>
+          </th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><span>1</span></td>
-          <td><a href="#"><span>プロジェクト１</span></a></td>
-          <td>
-            <div class="pull-right">
-              <a href="#" class="btn btn-default btn-sm">更新</a>
-              <a href="#" class="btn btn-default btn-sm">削除</a>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><span>2</span></td>
-          <td><a href="#"><span>プロジェクト２</span></a></td>
-          <td>
-            <div class="pull-right">
-              <a href="#" class="btn btn-default btn-sm">更新</a>
-              <a href="#" class="btn btn-default btn-sm">削除</a>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><span>3</span></td>
-          <td><a href="#"><span>プロジェクト３</span></a></td>
+        <tr th:each="projectSummary : ${projectSummaries.list}">
+          <td><span th:text="${projectSummary.id}">1</span></td>
+          <td><a href="#"><span th:text="${projectSummary.name}">プロジェクトX</span></a></td>
           <td>
             <div class="pull-right">
               <a href="#" class="btn btn-default btn-sm">更新</a>
@@ -117,7 +52,5 @@
       </ul>
     </nav>
   </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
