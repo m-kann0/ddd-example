@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ddd.example.domain.model.project.Project;
+import com.ddd.example.domain.model.project.ProjectId;
 import com.ddd.example.domain.model.project.ProjectRepository;
 import com.ddd.example.domain.model.project.ProjectSummaries;
 import com.ddd.example.domain.model.project.ProjectSummary;
@@ -23,7 +24,17 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     }
 
     @Override
+    public Project findOne(ProjectId id) {
+        return this.mapper.findOne(id);
+    }
+
+    @Override
     public void register(Project project) {
         this.mapper.register(project);
+    }
+
+    @Override
+    public void update(Project project) {
+        this.mapper.update(project);
     }
 }

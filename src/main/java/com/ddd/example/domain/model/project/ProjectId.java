@@ -4,8 +4,8 @@ public class ProjectId {
 
     private final Integer value;
 
-    public ProjectId(Integer value) {
-        this.value = value;
+    public ProjectId(String value) {
+        this.value = Integer.parseInt(value);
     }
 
     public ProjectId() {

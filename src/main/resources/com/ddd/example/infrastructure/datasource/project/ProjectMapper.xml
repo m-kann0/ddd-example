@@ -7,6 +7,11 @@
     <result property="name.value" column="pj_name"/>
   </resultMap>
 
+  <resultMap id="project" type="com.ddd.example.domain.model.project.Project">
+    <id property="id.value" column="id"/>
+    <result property="name.value" column="name"/>
+  </resultMap>
+
   <select id="list" resultMap="projectSummary">
     SELECT
         pj.id   pj_id
@@ -17,6 +22,16 @@
       pj.name
   </select>
 
+  <select id="findOne" resultMap="project">
+    SELECT
+        projects.id
+      , projects.name
+    FROM
+      projects
+    WHERE
+      projects.id = #{id.value}
+  </select>
+
   <insert id="register">
     INSERT INTO projects (
       name
@@ -24,5 +39,13 @@
       #{project.name.value}
     )
   </insert>
+
+  <update id="update">
+    UPDATE projects
+    SET
+      name = #{project.name.value}
+    WHERE
+      id = #{project.id.value}
+  </update>
 
 </mapper>
