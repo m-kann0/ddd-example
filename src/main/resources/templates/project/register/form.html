@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+</head>
+<body>
+  <div layout:fragment="content">
+    <h3 class="page-header">プロジェクト登録</h3>
+    <form method="post" th:action="@{/project/register}" th:object="${project}">
+      <div class="row">
+        <div class="form-group col-md-4" th:classappend="${#fields.hasErrors('name.*')} ? 'has-error'">
+          <label for="name" class="control-label">プロジェクト名 *</label>
+          <input type="text" class="form-control" id="name" name="name"/>
+          <span th:if="${#fields.hasErrors('name.*')}" th:errors="*{name.*}" class="help-block">error!</span>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">登録</button>
+      <a href="#" th:href="@{/project/list}" class="btn btn-default">戻る</a>
+    </form>
+  </div>
+</body>
+</html>

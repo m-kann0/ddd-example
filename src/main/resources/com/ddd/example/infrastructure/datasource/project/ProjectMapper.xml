@@ -17,4 +17,12 @@
       pj.name
   </select>
 
+  <insert id="register">
+    INSERT INTO projects (
+      name
+    ) VALUES (
+      #{project.name.value}
+    )
+  </insert>
+
 </mapper>

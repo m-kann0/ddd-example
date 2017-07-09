@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ddd.example.domain.model.project.Project;
 import com.ddd.example.domain.model.project.ProjectRepository;
 import com.ddd.example.domain.model.project.ProjectSummaries;
 import com.ddd.example.domain.model.project.ProjectSummary;
@@ -19,5 +20,10 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     public ProjectSummaries list() {
         List<ProjectSummary> list = this.mapper.list();
         return new ProjectSummaries(list);
+    }
+
+    @Override
+    public void register(Project project) {
+        this.mapper.register(project);
     }
 }
