@@ -9,4 +9,6 @@ public interface ProjectRepository {
     void register(Project project);
 
     void update(Project project);
+
+    void delete(ProjectId id);
 }

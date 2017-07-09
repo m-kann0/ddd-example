@@ -29,4 +29,8 @@ public class ProjectService {
     public void update(Project project) {
         this.projectRepository.update(project);
     }
+
+    public void delete(ProjectId id) {
+        this.projectRepository.delete(id);
+    }
 }

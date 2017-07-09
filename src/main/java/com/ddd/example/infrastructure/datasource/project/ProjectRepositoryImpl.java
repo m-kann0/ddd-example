@@ -37,4 +37,9 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     public void update(Project project) {
         this.mapper.update(project);
     }
+
+    @Override
+    public void delete(ProjectId id) {
+        this.mapper.delete(id);
+    }
 }

@@ -41,11 +41,19 @@
   </insert>
 
   <update id="update">
-    UPDATE projects
+    UPDATE
+      projects
     SET
       name = #{project.name.value}
     WHERE
       id = #{project.id.value}
   </update>
+
+  <delete id="delete">
+    DELETE FROM
+      projects
+    WHERE
+      id = #{id.value}
+  </delete>
 
 </mapper>

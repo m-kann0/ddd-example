@@ -19,4 +19,6 @@ public interface ProjectMapper {
     void register(@Param("project") Project project);
 
     void update(@Param("project") Project project);
+
+    void delete(@Param("id") ProjectId id);
 }
